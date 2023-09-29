@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arrivnow
+  namespace: arrivnow
+  labels:
+    app: arrivnow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arrivnow
+  template:
+    metadata:
+      labels:
+        app: arrivnow
+    spec:
+      containers:
+      - name: arrivnow
+        image: vapprtech/arrivnow-reactjs:latest
+        imagePullPolicy: Always
+        ports:
+        - name: https
+          containerPort: 4200
